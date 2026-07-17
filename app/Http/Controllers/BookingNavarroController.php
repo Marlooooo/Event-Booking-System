@@ -109,22 +109,37 @@ class BookingNavarroController extends Controller
 
     public function storeDetails(Request $request)
     {
+        $venue = EventRoomNavarro::findOrFail($request->event_room_navarro_id);
+
         $validated = $request->validate([
             'event_room_navarro_id' => ['required', 'exists:events_rooms_navarro,id'],
             'event_navarro_id'      => ['required', 'exists:events_navarro,id'],
             'booking_date'          => ['required', 'date', 'after_or_equal:today'],
-            'num_persons'           => ['required', 'integer', 'min:1', 'max:100'],
-        ], $this->validationMessages());
+            'num_persons' => [
+                'required',
+                'integer',
+                'min:1',
+                'max:' . $venue->capacity,
+            ],
+        ], [
+            ...$this->validationMessages(),
+            'num_persons.max' => "This venue only allows {$venue->capacity} persons.",
+        ]);
 
-        // Conflict check: same venue already booked on that date.
-        $conflict = $this->hasConflict($validated['event_room_navarro_id'], $validated['booking_date']);
+        // Conflict check
+        $conflict = $this->hasConflict(
+            $validated['event_room_navarro_id'],
+            $validated['booking_date']
+        );
 
         if ($conflict) {
-            return back()->withErrors(['booking_date' => $conflict])->withInput();
+            return back()->withErrors([
+                'booking_date' => $conflict
+            ])->withInput();
         }
 
         $validated['customer_name'] = session('booking.customerName');
-        $validated['booking_id']    = $this->generateBookingId();
+        $validated['booking_id'] = $this->generateBookingId();
 
         session(['booking.details' => $validated]);
 
@@ -257,12 +272,22 @@ class BookingNavarroController extends Controller
     {
         $this->authorizeOwnBooking($bookingNavarro);
 
+        $venue = EventRoomNavarro::findOrFail($request->event_room_navarro_id);
+
         $validated = $request->validate([
             'event_room_navarro_id' => ['required', 'exists:events_rooms_navarro,id'],
             'event_navarro_id'      => ['required', 'exists:events_navarro,id'],
             'booking_date'          => ['required', 'date', 'after_or_equal:today'],
-            'num_persons'           => ['required', 'integer', 'min:1', 'max:100'],
-        ], $this->validationMessages());
+            'num_persons' => [
+                'required',
+                'integer',
+                'min:1',
+                'max:' . $venue->capacity,
+            ],
+        ], [
+            ...$this->validationMessages(),
+            'num_persons.max' => "This venue only allows {$venue->capacity} persons.",
+        ]);
 
         $conflict = $this->hasConflict(
             $validated['event_room_navarro_id'],

@@ -88,21 +88,32 @@
         </div>
 
         <div class="form-card-footer">
-            <div>
-                <form method="POST" action="{{ route('events-rooms.destroy', $eventRoomNavarro) }}"
-                      onsubmit="return confirm('Delete this venue permanently?')" style="display:inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn-danger">Delete Venue</button>
-                </form>
-            </div>
-            <div class="footer-actions">
-                <a href="{{ route('events-rooms.index') }}" class="btn-cancel">Cancel</a>
-                <button type="submit" class="btn-submit">Save Changes</button>
-            </div>
-        </div>
-    </div>
 
-</form>
+            <button type="button"
+                    class="btn-danger"
+                    onclick="if(confirm('Delete this venue permanently?')) document.getElementById('deleteVenueForm').submit();">
+                Delete Venue
+            </button>
+
+            <div class="footer-actions">
+                <a href="{{ route('events-rooms.index') }}" class="btn-cancel">
+                    Cancel
+                </a>
+
+                <button type="submit" class="btn-submit">
+                    Save Changes
+                </button>
+            </div>
+
+        </div>
+    </form>
+
+        <form id="deleteVenueForm"
+            method="POST"
+            action="{{ route('events-rooms.destroy', $eventRoomNavarro) }}"
+            style="display:none;">
+            @csrf
+            @method('DELETE')
+        </form>
 
 @endsection

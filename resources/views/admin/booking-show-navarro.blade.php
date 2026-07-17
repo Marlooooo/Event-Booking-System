@@ -24,11 +24,11 @@
         <div class="btn-row" style="margin-top:24px;">
             <form method="POST" action="{{ route('admin.booking.accept.navarro', $bookingNavarro) }}">
                 @csrf @method('PATCH')
-                <button class="btn" style="background:linear-gradient(135deg,#16a34a,#15803d);">✅ Accept Booking</button>
+                <button class="btn" style="background:linear-gradient(135deg,#16a34a,#15803d);">Accept Booking</button>
             </form>
             <form method="POST" action="{{ route('admin.booking.reject.navarro', $bookingNavarro) }}">
                 @csrf @method('PATCH')
-                <button class="btn" style="background:linear-gradient(135deg,#dc2626,#b91c1c);">❌ Reject Booking</button>
+                <button class="btn" style="background:linear-gradient(135deg,#dc2626,#b91c1c);">Reject Booking</button>
             </form>
         </div>
     @endif

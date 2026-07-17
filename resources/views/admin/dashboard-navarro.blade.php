@@ -19,7 +19,7 @@
         <div class="stat-number" id="stat-total">{{ $stats['total'] }}</div>
         <div class="stat-label">Total Bookings</div>
     </div>
-    <div class="stat-card" style="border-color:#6366f1;">
+    <div class="stat-card" style="border-color:#59595b;">
         <div class="stat-number" id="stat-users">{{ $stats['users'] }}</div>
         <div class="stat-label">Total Users</div>
     </div>

@@ -19,11 +19,10 @@ class DatabaseSeeder extends Seeder
             AdminNavarroSeeder::class,
             EventRoomNavarroSeeder::class,
             EventNavarroSeeder::class,
-            BookingNavarroSeeder::class,
         ]);
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Marlo S. Navarro',
+            'email' => 'marloN@lotlotevent.com',
         ]);
     }
 }

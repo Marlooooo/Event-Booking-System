@@ -14,6 +14,9 @@
         @error('confirmation_file')<div class="field-error">{{ $message }}</div>@enderror
 
         <div class="btn-row">
+            <a class="btn btn-outline" href="{{ route('customer.dashboard.navarro') }}">
+                &#8592; Dashboard
+            </a>
             <a class="btn btn-outline" href="{{ route('booking.details') }}">← Back</a>
             <button type="submit">Upload & Continue →</button>
         </div>

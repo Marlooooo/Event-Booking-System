@@ -11,11 +11,11 @@ class AdminNavarroSeeder extends Seeder
     public function run(): void
     {
         User::updateOrCreate(
-            ['email' => 'admin@lotlot.com'],
+            ['email' => 'marlotlotAdmin@lotlot.com'],
             [
                 'name' => 'Lotlot Admin',
-                'email' => 'admin@lotlot.com',
-                'password' => Hash::make('admin1234'),
+                'email' => 'marlotlotAdmin@lotlot.com',
+                'password' => Hash::make('12345'),
                 'role' => 'admin',
             ]
         );

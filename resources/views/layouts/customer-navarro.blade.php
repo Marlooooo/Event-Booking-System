@@ -10,14 +10,14 @@
         body { margin:0; font-family:'Plus Jakarta Sans',sans-serif; background:#f4f6f8; color:#1f2937; display:flex; min-height:100vh; }
         .sidebar {
             width:230px; min-height:100vh; flex-shrink:0;
-            background: linear-gradient(180deg,#0f172a,#1e1b4b);
+            background: linear-gradient(180deg, #1e1b4b, #312e81);
             padding:28px 20px; display:flex; flex-direction:column; gap:6px;
         }
         .sidebar .brand { color:#fff; font-weight:800; font-size:16px; margin-bottom:2px; padding: 14px;}
         .sidebar .brand span { display:block; font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px; text-transform:uppercase; letter-spacing:1px; }
         .sidebar a { display:block; color:rgba(255,255,255,0.7); text-decoration:none; padding:10px 14px; border-radius:8px; font-size:14px; font-weight:500; transition:background .15s; }
         .sidebar a:hover { background:rgba(255,255,255,0.12); color:#fff; }
-        .sidebar .user-info { color:rgba(255,255,255,0.5); font-size:12px; padding:10px 14px; }
+        .sidebar .user-info { color:rgba(255, 246, 246, 0.97); font-size:16px; padding:10px 14px; }
         .sidebar .divider { border:none; border-top:1px solid rgba(255,255,255,0.1); margin:12px 0; }
         .sidebar form button { width:100%; background:transparent; border:none; color:rgba(255,255,255,0.7); text-align:left; padding:10px 14px; border-radius:8px; font-size:14px; font-weight:500; cursor:pointer; font-family:inherit; transition:background .15s; }
         .sidebar form button:hover { background:rgba(255,255,255,0.12); color:#fff; }
@@ -31,8 +31,8 @@
 }        h1 { font-size:24px; font-weight:800; margin:0 0 6px; background:linear-gradient(135deg,#4338ca,#7c3aed); -webkit-background-clip:text; background-clip:text; color:transparent; }
         .subtitle { color:#6b7280; font-size:14px; margin:0 0 20px; }
         .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:14px; margin:16px 0 24px; }
-        .stat-card { background:#fff; border-radius:14px; padding:18px; text-align:center; box-shadow:0 2px 10px rgba(0,0,0,0.05); border-left:4px solid #6366f1; }
-        .stat-card.pending { border-color:#f59e0b; }
+        .stat-card { background:#fff; border-radius:14px; padding:18px; text-align:center; box-shadow:0 2px 10px rgba(0,0,0,0.05); border-left:4px solid #59595b; }
+        .stat-card.pending { border-color:#a5b4fc; }
         .stat-card.accepted { border-color:#22c55e; }
         .stat-card.rejected { border-color:#ef4444; }
         .stat-number { font-size:30px; font-weight:800; color:#1f2937; }
@@ -58,8 +58,8 @@
         <div class="user-info">{{ auth()->user()->name }}</div>
         <hr class="divider">
         <a href="{{ route('customer.dashboard.navarro') }}">My Dashboard</a>
-        <a href="{{ route('booking.start') }}">New Booking</a>
-        <a href="{{ route('booking.my-bookings') }}">My Bookings</a>
+        <a href="{{ route('booking.start') }}">Create Appointment</a>
+        <a href="{{ route('booking.my-bookings') }}">Booking History</a>
         <hr class="divider">
         <form method="POST" action="{{ route('logout.navarro') }}">
             @csrf

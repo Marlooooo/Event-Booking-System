@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('events_rooms_navarro', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('type', ['event', 'room'])->default('room');
+            $table->enum('type', ['Room', 'Outdoor'])->default('Room');
             $table->string('location')->nullable();
             $table->unsignedInteger('capacity')->default(50);
             $table->text('description')->nullable();
